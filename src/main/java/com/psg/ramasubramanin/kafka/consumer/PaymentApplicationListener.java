@@ -18,7 +18,7 @@ public class PaymentApplicationListener {
 	
 	private final Logger logger = LoggerFactory.getLogger(PaymentApplicationListener.class);
 	
-	@KafkaListener(topics = "Order Topic2", groupId = "PaymentApplication",
+	@KafkaListener(topics = "Order", groupId = "PaymentApplication",
 			containerFactory = "com.psg.ramasubramanin.kafka.consumer.orderContainerFactory")
 	public void listenToOrderMessages(Order order) {
 		logger.debug("Processing payment. Recieved Order Message. Order = {}", order);

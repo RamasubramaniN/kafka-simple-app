@@ -26,7 +26,7 @@ public class ProducerConfiguration {
 	private String bootstrapServerAddress;
 	
 	@Autowired
-	public ProducerConfiguration(@Value("kafka.bootstrapServerAddress") String bootstrapServerAddress) {
+	public ProducerConfiguration(@Value("${kafka.bootstrapServerAddress}") String bootstrapServerAddress) {
 		this.bootstrapServerAddress = bootstrapServerAddress;
 	}
 		

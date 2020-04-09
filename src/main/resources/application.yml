@@ -1,4 +1,16 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /FoodDeliveryApp
 kafka:
-  bootstrapServerAddress: 127.0.0.1:9092
+  bootstrapServerAddress: localhost:9092
   order:
     topicName: Order
+spring:
+  kafka:
+    consumer:
+      properties:
+        spring:
+          json:
+            trusted:
+              packages:*

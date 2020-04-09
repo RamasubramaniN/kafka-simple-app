@@ -30,7 +30,7 @@ public class OrderProducer {
 	@Autowired
 	public OrderProducer(@Qualifier("com.psg.ramasubramanin.kafka.producer.orderKafkaTemplate")
 			KafkaTemplate<Long, Order> kafkaTemplate, 
-			@Value("kafka.order.topicName") String topicName) {
+			@Value("${kafka.order.topicName}") String topicName) {
 		this.kafkaTemplate = kafkaTemplate;
 		this.topicName = topicName;
 	}
