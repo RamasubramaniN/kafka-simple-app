@@ -1,0 +1,4 @@
+kafka:
+  bootstrapServerAddress: 127.0.0.1:9092
+  order:
+    topicName: Order
