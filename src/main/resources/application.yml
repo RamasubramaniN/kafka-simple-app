@@ -14,3 +14,7 @@ spring:
           json:
             trusted:
               packages:*
+logging:
+  level:
+    root: INFO
+    com.psg.ramasubramanin : DEBUG
