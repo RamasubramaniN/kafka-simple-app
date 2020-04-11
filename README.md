@@ -1,4 +1,4 @@
-# kafka-basics
+# kafka-Setup
 Exploring Kafka
 
 Install Kafka locally. Do following steps using Kafka CLI.
@@ -23,7 +23,9 @@ kafka-topics --zookeeper 127.0.0.1:2181 --topic PaymentStatus --create --partiti
 Post an order
 -------------------
 POST : http://localhost:8080/FoodDeliveryApp/orders/ 
+
 Content-Type:application/json
+
 Request Body :
 {
 	"name": "Mushroom Biriyani",
