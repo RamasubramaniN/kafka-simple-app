@@ -53,6 +53,8 @@ Request Body :
 	"restaurantId": 1
 }
 
+Workflow
+-------------------
 This is a simple app. In real world, all the consumers will be part of different microservices.
 To simplify things, all services/consumers are in single microservice in this example.
 1. Customer Posts an order via REST API. 
