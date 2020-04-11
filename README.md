@@ -8,11 +8,16 @@ cd /Users/rn51/Personal/kafka_2.12-2.4.1/bin
 
 zookeeper-server-start ../config/zookeeper.properties
 
+Kafka zookeeper is running @ 127.0.0.1 : 2181
+
+
 Start Kafka Server
 -------------------
 cd /Users/rn51/Personal/kafka_2.12-2.4.1/bin
 
 kafka-server-start ../config/server.properties
+
+Kafka Server is running @ 127.0.0.1 : 9092
 
 Create Topic
 -------------
@@ -22,6 +27,18 @@ kafka-topics --zookeeper 127.0.0.1:2181 --topic Order --create --partitions 3 --
 
 kafka-topics --zookeeper 127.0.0.1:2181 --topic PaymentStatus --create --partitions 3 --replication-factor 1
 
+Topic messages are distributed across 3 partitions based on Keys.
+
+
+Consumer Group
+----------------
+Three Consumer Groups.
+
+1. Payment Application
+2. Order Application
+3. Restaurant Application.
+
+All 3 consumer groups have 3 consumers each.
 
 Post an order
 -------------------
