@@ -4,8 +4,9 @@ server:
     context-path: /FoodDeliveryApp
 kafka:
   bootstrapServerAddress: localhost:9092
-  order:
-    topicName: Order
+  topic:
+    order: Order
+    paymentStatus: PaymentStatus
 spring:
   kafka:
     consumer:

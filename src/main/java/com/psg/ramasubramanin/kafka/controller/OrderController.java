@@ -24,6 +24,16 @@ public class OrderController {
 		this.orderService = orderService;
 	}
 	
+	/***
+	 * POST : http://localhost:8080/FoodDeliveryApp/orders/ 
+	 * Content-Type:application/json
+	 	{
+    		"name": "Mushroom Biriyani",
+    		"quantity": 1,
+    		"restaurantId": 1
+		}
+	 *
+	 */
 	@PostMapping(path = "/", consumes = "application/json")
 	public void createOrder(@RequestBody Order order) {
 		orderService.createOrder(order);

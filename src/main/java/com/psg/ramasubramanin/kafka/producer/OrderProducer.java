@@ -30,7 +30,7 @@ public class OrderProducer {
 	@Autowired
 	public OrderProducer(@Qualifier("com.psg.ramasubramanin.kafka.producer.orderKafkaTemplate")
 			KafkaTemplate<Long, Order> kafkaTemplate, 
-			@Value("${kafka.order.topicName}") String topicName) {
+			@Value("${kafka.topic.order}") String topicName) {
 		this.kafkaTemplate = kafkaTemplate;
 		this.topicName = topicName;
 	}
@@ -52,7 +52,7 @@ public class OrderProducer {
 
 			@Override
 			public void onFailure(Throwable arg0) {
-				logger.debug("Message failed to send. Order : {}", order);
+				logger.error("Message failed to send. Order : {}", order);
 			}
 		
 		});

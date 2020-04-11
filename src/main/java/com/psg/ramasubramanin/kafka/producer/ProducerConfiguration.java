@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,8 +14,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
-import com.fasterxml.jackson.databind.ser.std.StringSerializer;
 import com.psg.ramasubramanin.kafka.model.Order;
+import com.psg.ramasubramanin.kafka.model.PaymentStatus;
 
 /**
  * @author rn51
@@ -52,6 +53,17 @@ public class ProducerConfiguration {
 		return new DefaultKafkaProducerFactory<>(defaultProducerConfig);
 	}
 	
+	@Bean(name = "com.psg.ramasubramanin.kafka.producer.paymentStatusProducer") 
+	public ProducerFactory<Long, PaymentStatus> paymentStatusProducerFactory(){
+		Map<String, Object> config = new HashMap<>();
+		
+		config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServerAddress);
+		config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+		config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+		
+		return new DefaultKafkaProducerFactory<>(config);
+	}
+	
 	@Bean(name = "com.psg.ramasubramanin.kafka.producer.orderKafkaTemplate")
 	public KafkaTemplate<Long, Order> orderKafkaTemplate() {
 		return new KafkaTemplate<>(orderProducerFactory());
@@ -60,6 +72,11 @@ public class ProducerConfiguration {
 	@Bean(name = "com.psg.ramasubramanin.kafka.producer.defaultKafkaTemplate")
 	public KafkaTemplate<String, String> defaultKafkaTemplate() {
 		return new KafkaTemplate<>(defaultProducerFactory());
+	}
+	
+	@Bean(name = "com.psg.ramasubramanin.kafka.producer.paymentStatusKafkaTemplate")
+	public KafkaTemplate<Long, PaymentStatus> paymentStatusKafkaTemplate() {
+		return new KafkaTemplate<>(paymentStatusProducerFactory());
 	}
 	
 }

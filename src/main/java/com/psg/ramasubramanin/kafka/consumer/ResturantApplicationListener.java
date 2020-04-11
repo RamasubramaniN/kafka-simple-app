@@ -18,7 +18,7 @@ public class ResturantApplicationListener {
 	
 	private final Logger logger = LoggerFactory.getLogger(ResturantApplicationListener.class);
 	
-	@KafkaListener(topics = "Order", groupId = "RestaurantApplication", 
+	@KafkaListener(topics = "${kafka.topic.order}", groupId = "RestaurantApplication", 
 			containerFactory = "com.psg.ramasubramanin.kafka.consumer.orderContainerFactory")
 	public void listenToOrderMessages(Order order) {
 		logger.debug("Restaurnt Processing Order Message. Order = {}", order);
