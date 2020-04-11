@@ -1,5 +1,4 @@
 # kafka-Setup
-Exploring Kafka
 
 Install Kafka locally. Do following steps using Kafka CLI.
 
