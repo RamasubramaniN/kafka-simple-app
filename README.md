@@ -1,4 +1,4 @@
-# kafka-Setup
+# kafka-Setup-Local
 
 Install Kafka locally. Do following steps using Kafka CLI.
 
