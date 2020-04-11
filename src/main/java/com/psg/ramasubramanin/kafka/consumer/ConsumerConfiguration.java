@@ -7,10 +7,12 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.jms.JmsProperties.AcknowledgeMode;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
+import org.springframework.kafka.listener.ContainerProperties.AckMode;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.stereotype.Component;
 
@@ -43,7 +45,7 @@ public class ConsumerConfiguration {
 		return new DefaultKafkaConsumerFactory<>(consumerConfig);
 	}
 	
-	//Creating ConsumerGroup/Appication with 3 consumers.
+	//Creating ConsumerGroup/Application with 3 consumers.
 	@Bean(name = "com.psg.ramasubramanin.kafka.consumer.defaultContainerFactory")
 	public ConcurrentKafkaListenerContainerFactory<String, String> defaultContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<String, String> defaultContainerFactory =
@@ -61,17 +63,19 @@ public class ConsumerConfiguration {
 		consumerConfig.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
 		consumerConfig.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
 		consumerConfig.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
+		consumerConfig.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
 		
 		return new DefaultKafkaConsumerFactory<>(consumerConfig);
 	}
 	
-	//Creating ConsumerGroup/Appication with 3 consumers.
+	//Creating ConsumerGroup/Application with 3 consumers.
 	@Bean(name = "com.psg.ramasubramanin.kafka.consumer.orderContainerFactory")
 	public ConcurrentKafkaListenerContainerFactory<Long, Order> orderContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<Long, Order> orderContainerFactory =
 				new ConcurrentKafkaListenerContainerFactory<>();
 		orderContainerFactory.setConcurrency(3);
 		orderContainerFactory.setConsumerFactory(orderConsumerFactory());
+		orderContainerFactory.getContainerProperties().setAckMode(AckMode.MANUAL_IMMEDIATE);
 		
 		return orderContainerFactory;
 	}
@@ -88,7 +92,7 @@ public class ConsumerConfiguration {
 		return new DefaultKafkaConsumerFactory<>(config);
 	}
 	
-	//Creating ConsumerGroup/Appication with 3 consumers.
+	//Creating ConsumerGroup/Application with 3 consumers.
 	@Bean(name = "com.psg.ramasubramanin.kafka.consumer.paymentStatusContainerFactory")
 	public ConcurrentKafkaListenerContainerFactory<Long, PaymentStatus> paymentStatusContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<Long, PaymentStatus> containerFactory =

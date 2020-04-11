@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;
 
 import com.psg.ramasubramanin.kafka.model.PaymentStatus;
@@ -23,7 +24,7 @@ public class OrderApplicationListener {
 	public void listenToPaymentStatusMessages(PaymentStatus paymentStatus) {
 		logger.debug("Payment Done. Payment Status : {}", paymentStatus);
 		if(paymentStatus.isPaymentSuccessful())
-			logger.debug("Payment Successful. Placed the order");
+			logger.debug("Payment Successful. Placed the order.");
 		else
 			logger.error("Payment failed. Send a cancellation message to restaurant.");
 	}
