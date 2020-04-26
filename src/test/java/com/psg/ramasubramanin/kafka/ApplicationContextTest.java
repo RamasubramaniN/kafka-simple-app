@@ -6,6 +6,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.psg.ramasubramanin.kafka.consumer.ConsumerConfiguration;
@@ -15,6 +17,7 @@ import com.psg.ramasubramanin.kafka.consumer.ConsumerConfiguration;
  * @author rn5
  * To test application Context
  */
+@ActiveProfiles("test")
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class ApplicationContextTest {

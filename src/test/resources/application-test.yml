@@ -1,0 +1,21 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /FoodDeliveryApp
+kafka:
+  bootstrapServerAddress: localhost:9092
+  topic:
+    order: Order
+    paymentStatus: PaymentStatus
+spring:
+  kafka:
+    consumer:
+      properties:
+        spring:
+          json:
+            trusted:
+              packages:*
+logging:
+  level:
+    root: INFO
+    com.psg.ramasubramanin : DEBUG
