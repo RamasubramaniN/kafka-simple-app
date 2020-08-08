@@ -19,22 +19,22 @@ Set the log files in config
 config/Zookeeper.properties
 -----------------------------
 
+`
 dataDir=/Users/rn51/Personal/kafka_2.12-2.4.1/data/zookeeper
-
 clientPort=2181
+`
 
 config/server.properties
 -----------------------------
 
+`
 log.dirs=/Users/rn51/Personal/kafka_2.12-2.4.1/data/kafka
-
 broker.id=0
-
 num.partitions=3
-
 log.retention.hours=168
-
 zookeeper.connect=localhost:2181
+`
+Kafka broker has to register to Zookeeper. If you have more than one zookeeper, enter comma separated values.
 
 To setup multiple brokers connecting to same set of zookeepers
 ----------------------------------------------------------------
@@ -46,3 +46,34 @@ Create server1.properties from server.properties config file and assign differen
 Replication factor  <= Number of brokers.
 
 cd /Users/rn51/Personal/kafka_2.12-2.4.1/data/kafka
+
+Prerequisite
+---------------
+
+1. Stop all running brokers & zookeepers.
+
+2. If you would like to start from scratch, delete log files --> This action will delete all existing topics & messages.
+
+`
+rm -rf /Users/rn51/Personal/kafka_2.12-2.4.1/data/kafka/
+rm -rf /Users/rn51/Personal/kafka_2.12-2.4.1/data/zookeeper/
+`
+
+Start Zookeeper
+-----------------
+
+`
+cd /Users/rn51/Personal/kafka_2.12-2.4.1/bin/
+zookeeper-server-start ../config/zookeeper.properties
+`
+Zookeeper will start at localhost:2181
+
+Start Kafka
+-----------------
+
+`
+cd /Users/rn51/Personal/kafka_2.12-2.4.1/bin/
+kafka-server-start ../config/server.properties
+`
+Kafka will start at port 9092 & it will register with Zookeeper.
+
