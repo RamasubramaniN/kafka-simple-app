@@ -141,4 +141,4 @@ kafka-console-producer --broker-list 127.0.0.1:9092 --topic Order
 >Happy Learning Kafka
 ```
 
-Stop the Producer & Consumer. We will create Producers, Consumer Groups & Consumers from the program. Please Refer [Readme.md] (https://github.com/RamasubramaniN/kafka-simple-app/blob/master/README.md)
+Stop the Producer & Consumer. We will create Producers, Consumer Groups & Consumers from our sample application. Please refer https://github.com/RamasubramaniN/kafka-simple-app/blob/master/README.md
