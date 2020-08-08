@@ -78,12 +78,70 @@ zookeeper-server-start ../config/zookeeper.properties
 Zookeeper will start at localhost:2181
 
 Start Kafka
------------------
+------------
 
 ```
 cd /Users/rn51/Personal/kafka_2.12-2.4.1/bin/
 
 kafka-server-start ../config/server.properties
 ```
-Kafka will start at port 9092 & it will register with Zookeeper.
+Kafka/Broker will start at port 9092 & it will register itself with Zookeeper.
 
+Create Topics
+--------------
+
+Create 2 Topics. Topics list maintained by Zookeeper. So, pass zookeeper info.
+
+1. Order
+
+2. PaymentStatus
+
+```
+cd /Users/rn51/Personal/kafka_2.12-2.4.1/bin
+
+kafka-topics --zookeeper 127.0.0.1:2181 --topic Order --create --partitions 3 --replication-factor 1
+
+kafka-topics --zookeeper 127.0.0.1:2181 --topic PaymentStatus --create --partitions 3 --replication-factor 1
+```
+
+Topics Info - CLI
+-------------------
+
+1. To get all topics. Topics list maintained by Zookeeper. So, pass zookeeper info.
+```
+kafka-topics --zookeeper 127.0.0.1:2181 --list
+```
+
+2. To see partitions, leaders & replicas.
+```
+kafka-topics --zookeeper 127.0.0.1:2181 --describe
+```
+
+3. To see partitions, leaders & replicas for a specific topic.
+```
+kafka-topics --zookeeper 127.0.0.1:2181 --describe --topic Order
+```
+
+Create Dummy Producers & Consumers
+------------------------------------
+
+Consumer & Producer need to know bootstrap server (Bootstrap server == Kafka Broker/Kafka)
+
+Create a Consumer. 
+```
+kafka-console-consumer --bootstrap-server 127.0.0.1:9092 --topic Order --from-beginning
+```
+
+Create a producer. 
+
+Send some text messages. Consumer will immediately consume.
+
+```
+kafka-console-producer --broker-list 127.0.0.1:9092 --topic Order
+
+>Hello
+>My First Message
+>Happy Learning Kafka
+```
+
+Stop the Producer & Consumer. We will create Producers, Consumer Groups & Consumers from the program. Please Refer Readme.md
