@@ -84,17 +84,24 @@ Some Logs - Each Consumer Group has 3 consumers.
 2020-04-11 10:02:15.059 DEBUG 2278 --- [ad | producer-1] c.p.r.kafka.producer.OrderProducer       : Message Sent. Order : com.psg.ramasubramanin.kafka.model.Order@2dda33c4[id=2,name=Paneer Biriyani,quantity=1,restaurantId=1]
 2020-04-11 10:02:15.059 DEBUG 2278 --- [ad | producer-1] c.p.r.kafka.producer.OrderProducer       : Order Key=2, Partition=2, Offset=1
 2020-04-11 10:02:15.060 DEBUG 2278 --- [ntainer#1-2-C-1] c.p.r.k.c.PaymentApplicationListener     : Processing payment. Recieved Order Message. Order = com.psg.ramasubramanin.kafka.model.Order@7421fe11[id=2,name=Paneer Biriyani,quantity=1,restaurantId=1]
+
 2020-04-11 10:02:15.060 DEBUG 2278 --- [ntainer#2-2-C-1] c.p.r.k.c.ResturantApplicationListener   : Restaurnt Processing Order Message. Order = com.psg.ramasubramanin.kafka.model.Order@5cd34d23[id=2,name=Paneer Biriyani,quantity=1,restaurantId=1]
 2020-04-11 10:02:17.514 DEBUG 2278 --- [ad | producer-1] c.p.r.kafka.producer.OrderProducer       : Message Sent. Order : com.psg.ramasubramanin.kafka.model.Order@5a752c96[id=5,name=Mushroom Biriyani,quantity=1,restaurantId=1]
+
 2020-04-11 10:02:17.515 DEBUG 2278 --- [ad | producer-1] c.p.r.kafka.producer.OrderProducer       : Order Key=5, Partition=0, Offset=0
 2020-04-11 10:02:17.516 DEBUG 2278 --- [ntainer#1-0-C-1] c.p.r.k.c.PaymentApplicationListener     : Processing payment. Recieved Order Message. Order = com.psg.ramasubramanin.kafka.model.Order@3a982d1b[id=5,name=Mushroom Biriyani,quantity=1,restaurantId=1]
 2020-04-11 10:02:17.516 DEBUG 2278 --- [ntainer#2-0-C-1] c.p.r.k.c.ResturantApplicationListener   : Restaurnt Processing Order Message. Order = com.psg.ramasubramanin.kafka.model.Order@56fb0ce4[id=5,name=Mushroom Biriyani,quantity=1,restaurantId=1]
+
 2020-04-11 10:02:20.062 DEBUG 2278 --- [ntainer#1-2-C-1] c.p.r.k.c.PaymentApplicationListener     : Payment Done. Sending the status.
+
 2020-04-11 10:02:20.065 DEBUG 2278 --- [ad | producer-2] c.p.r.kafka.producer.PaymentProducer     : Message Sent. Order : com.psg.ramasubramanin.kafka.model.PaymentStatus@2bde631a
+
 2020-04-11 10:02:20.066 DEBUG 2278 --- [ad | producer-2] c.p.r.kafka.producer.PaymentProducer     : Payment Status Key=2, Partition=2, Offset=1
 2020-04-11 10:02:20.066 DEBUG 2278 --- [ntainer#0-2-C-1] c.p.r.k.c.OrderApplicationListener       : Payment Done. Payment Status : com.psg.ramasubramanin.kafka.model.PaymentStatus@12a9a98f
+
 2020-04-11 10:02:22.519 DEBUG 2278 --- [ntainer#1-0-C-1] c.p.r.k.c.PaymentApplicationListener     : Payment Done. Sending the status.
 2020-04-11 10:02:22.522 DEBUG 2278 --- [ad | producer-2] c.p.r.kafka.producer.PaymentProducer     : Message Sent. Order : com.psg.ramasubramanin.kafka.model.PaymentStatus@6ee4656f
+
 2020-04-11 10:02:22.522 DEBUG 2278 --- [ad | producer-2] c.p.r.kafka.producer.PaymentProducer     : Payment Status Key=4, Partition=1, Offset=0
 2020-04-11 10:02:22.524 DEBUG 2278 --- [ntainer#0-1-C-1] c.p.r.k.c.OrderApplicationListener       : Payment Done. Payment Status : com.psg.ramasubramanin.kafka.model.PaymentStatus@6cf8d149
 2020-04-11 10:02:22.554 DEBUG 2278 --- [ntainer#0-1-C-1] c.p.r.k.c.OrderApplicationListener       : Payment Successful. Placed the order
